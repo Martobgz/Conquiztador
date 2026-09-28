@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # Third-party
     'rest_framework',
+
+    # Local
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -100,6 +103,29 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# Custom user model. Must be set before the first migration.
+# https://docs.djangoproject.com/en/5.2/topics/auth/customizing/#substituting-a-custom-user-model
+
+AUTH_USER_MODEL = "accounts.User"
+
+
+# Django REST Framework
+# https://www.django-rest-framework.org/api-guide/settings/
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+    ],
+    "EXCEPTION_HANDLER": "config.exceptions.api_exception_handler",
+}
 
 
 # Internationalization
