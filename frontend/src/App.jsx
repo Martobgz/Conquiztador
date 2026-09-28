@@ -1,122 +1,85 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+import './App.css'
+import { ensureCsrfToken, getCurrentUser } from './api'
+import LoginForm from './components/LoginForm'
+import ProfileScreen from './components/ProfileScreen'
+import RegisterForm from './components/RegisterForm'
+
+export default function App() {
+  const [user, setUser] = useState(null)
+  const [screen, setScreen] = useState('login')
+  const [notice, setNotice] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  // On a reload, the session cookie is still there, so ask the API who we are.
+  useEffect(() => {
+    let cancelled = false
+
+    async function restoreSession() {
+      await ensureCsrfToken()
+      try {
+        const me = await getCurrentUser()
+        if (!cancelled) setUser(me)
+      } catch {
+        // Not signed in: stay on the login screen.
+      } finally {
+        if (!cancelled) setLoading(false)
+      }
+    }
+
+    restoreSession()
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app">
+      <header className="app-header">
+        <h1>Conquiztador</h1>
+        <p className="muted">Claim the map, one question at a time.</p>
+      </header>
 
-      <div className="ticks"></div>
+      <main>
+        {notice && <p className="notice">{notice}</p>}
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        {loading ? (
+          <p className="loading">Loading…</p>
+        ) : user ? (
+          <ProfileScreen
+            user={user}
+            onUserChanged={setUser}
+            onLoggedOut={() => {
+              setUser(null)
+              setNotice(null)
+              setScreen('login')
+            }}
+          />
+        ) : screen === 'register' ? (
+          <RegisterForm
+            onRegistered={(created) => {
+              setNotice(`Account "${created.username}" created. Log in to continue.`)
+              setScreen('login')
+            }}
+            onGoToLogin={() => {
+              setNotice(null)
+              setScreen('login')
+            }}
+          />
+        ) : (
+          <LoginForm
+            onLoggedIn={(loggedIn) => {
+              setNotice(null)
+              setUser(loggedIn)
+            }}
+            onGoToRegister={() => {
+              setNotice(null)
+              setScreen('register')
+            }}
+          />
+        )}
+      </main>
+    </div>
   )
 }
-
-export default App
