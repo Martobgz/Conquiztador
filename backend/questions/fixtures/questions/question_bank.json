@@ -1,0 +1,680 @@
+[
+  {
+    "model": "questions.category",
+    "pk": 1,
+    "fields": {
+      "name": "История"
+    }
+  },
+  {
+    "model": "questions.category",
+    "pk": 2,
+    "fields": {
+      "name": "География"
+    }
+  },
+  {
+    "model": "questions.category",
+    "pk": 3,
+    "fields": {
+      "name": "Наука"
+    }
+  },
+  {
+    "model": "questions.category",
+    "pk": 4,
+    "fields": {
+      "name": "Спорт"
+    }
+  },
+  {
+    "model": "questions.category",
+    "pk": 5,
+    "fields": {
+      "name": "Литература и изкуство"
+    }
+  },
+  {
+    "model": "questions.category",
+    "pk": 6,
+    "fields": {
+      "name": "Математика"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "text": "Кой хан основава Дунавска България през 681 г.?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "text": "Кой български владетел покръства българите през IX век?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 3,
+    "fields": {
+      "category": 2,
+      "text": "Кой е най-високият връх в България?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 4,
+    "fields": {
+      "category": 2,
+      "text": "Коя е столицата на Австралия?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 5,
+    "fields": {
+      "category": 3,
+      "text": "Кой е химичният символ на златото?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 6,
+    "fields": {
+      "category": 3,
+      "text": "Коя планета е най-близо до Слънцето?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 7,
+    "fields": {
+      "category": 4,
+      "text": "В кой град се провеждат първите съвременни олимпийски игри през 1896 г.?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 8,
+    "fields": {
+      "category": 4,
+      "text": "В коя дисциплина Стефка Костадинова държи световния рекорд?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 9,
+    "fields": {
+      "category": 5,
+      "text": "Кой е авторът на романа „Под игото“?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 10,
+    "fields": {
+      "category": 5,
+      "text": "Кой е нарисувал „Мона Лиза“?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 11,
+    "fields": {
+      "category": 6,
+      "text": "Как се нарича триъгълник с три равни страни?"
+    }
+  },
+  {
+    "model": "questions.choicequestion",
+    "pk": 12,
+    "fields": {
+      "category": 6,
+      "text": "Кое от следните числа е просто?"
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 1,
+    "fields": {
+      "question": 1,
+      "text": "Аспарух",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 2,
+    "fields": {
+      "question": 1,
+      "text": "Крум",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 3,
+    "fields": {
+      "question": 1,
+      "text": "Тервел",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 4,
+    "fields": {
+      "question": 1,
+      "text": "Кубрат",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 5,
+    "fields": {
+      "question": 2,
+      "text": "Симеон I",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 6,
+    "fields": {
+      "question": 2,
+      "text": "Борис I",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 7,
+    "fields": {
+      "question": 2,
+      "text": "Самуил",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 8,
+    "fields": {
+      "question": 2,
+      "text": "Иван Асен II",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 9,
+    "fields": {
+      "question": 3,
+      "text": "Вихрен",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 10,
+    "fields": {
+      "question": 3,
+      "text": "Ботев",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 11,
+    "fields": {
+      "question": 3,
+      "text": "Мусала",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 12,
+    "fields": {
+      "question": 3,
+      "text": "Черни връх",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 13,
+    "fields": {
+      "question": 4,
+      "text": "Сидни",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 14,
+    "fields": {
+      "question": 4,
+      "text": "Мелбърн",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 15,
+    "fields": {
+      "question": 4,
+      "text": "Пърт",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 16,
+    "fields": {
+      "question": 4,
+      "text": "Канбера",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 17,
+    "fields": {
+      "question": 5,
+      "text": "Au",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 18,
+    "fields": {
+      "question": 5,
+      "text": "Ag",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 19,
+    "fields": {
+      "question": 5,
+      "text": "Gd",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 20,
+    "fields": {
+      "question": 5,
+      "text": "Go",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 21,
+    "fields": {
+      "question": 6,
+      "text": "Венера",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 22,
+    "fields": {
+      "question": 6,
+      "text": "Меркурий",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 23,
+    "fields": {
+      "question": 6,
+      "text": "Марс",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 24,
+    "fields": {
+      "question": 6,
+      "text": "Земя",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 25,
+    "fields": {
+      "question": 7,
+      "text": "Париж",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 26,
+    "fields": {
+      "question": 7,
+      "text": "Лондон",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 27,
+    "fields": {
+      "question": 7,
+      "text": "Атина",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 28,
+    "fields": {
+      "question": 7,
+      "text": "Рим",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 29,
+    "fields": {
+      "question": 8,
+      "text": "Скок на дължина",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 30,
+    "fields": {
+      "question": 8,
+      "text": "Троен скок",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 31,
+    "fields": {
+      "question": 8,
+      "text": "Бягане на 100 м",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 32,
+    "fields": {
+      "question": 8,
+      "text": "Скок на височина",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 33,
+    "fields": {
+      "question": 9,
+      "text": "Иван Вазов",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 34,
+    "fields": {
+      "question": 9,
+      "text": "Христо Ботев",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 35,
+    "fields": {
+      "question": 9,
+      "text": "Алеко Константинов",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 36,
+    "fields": {
+      "question": 9,
+      "text": "Елин Пелин",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 37,
+    "fields": {
+      "question": 10,
+      "text": "Микеланджело",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 38,
+    "fields": {
+      "question": 10,
+      "text": "Леонардо да Винчи",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 39,
+    "fields": {
+      "question": 10,
+      "text": "Рафаело",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 40,
+    "fields": {
+      "question": 10,
+      "text": "Ботичели",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 41,
+    "fields": {
+      "question": 11,
+      "text": "Равнобедрен",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 42,
+    "fields": {
+      "question": 11,
+      "text": "Правоъгълен",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 43,
+    "fields": {
+      "question": 11,
+      "text": "Равностранен",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 44,
+    "fields": {
+      "question": 11,
+      "text": "Тъпоъгълен",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 45,
+    "fields": {
+      "question": 12,
+      "text": "21",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 46,
+    "fields": {
+      "question": 12,
+      "text": "27",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 47,
+    "fields": {
+      "question": 12,
+      "text": "33",
+      "is_correct": false
+    }
+  },
+  {
+    "model": "questions.answeroption",
+    "pk": 48,
+    "fields": {
+      "question": 12,
+      "text": "17",
+      "is_correct": true
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "text": "През коя година е Освобождението на България от османско владичество?",
+      "correct_answer": 1878
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "text": "През коя година е обявена независимостта на България?",
+      "correct_answer": 1908
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 3,
+    "fields": {
+      "category": 2,
+      "text": "Колко области има в България?",
+      "correct_answer": 28
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 4,
+    "fields": {
+      "category": 2,
+      "text": "Колко метра е надморската височина на връх Мусала?",
+      "correct_answer": 2925
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 5,
+    "fields": {
+      "category": 3,
+      "text": "При колко градуса по Целзий кипи водата при нормално атмосферно налягане?",
+      "correct_answer": 100
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 6,
+    "fields": {
+      "category": 3,
+      "text": "Колко хромозоми има в една нормална човешка телесна клетка?",
+      "correct_answer": 46
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 7,
+    "fields": {
+      "category": 4,
+      "text": "Колко играчи от един отбор са на терена по време на футболен мач?",
+      "correct_answer": 11
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 8,
+    "fields": {
+      "category": 4,
+      "text": "През коя година България достига полуфинал на Световното първенство по футбол?",
+      "correct_answer": 1994
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 9,
+    "fields": {
+      "category": 5,
+      "text": "Колко песни съдържа „Божествена комедия“ на Данте?",
+      "correct_answer": 100
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 10,
+    "fields": {
+      "category": 5,
+      "text": "Колко стиха има в един сонет?",
+      "correct_answer": 14
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 11,
+    "fields": {
+      "category": 6,
+      "text": "Колко е 12 × 12?",
+      "correct_answer": 144
+    }
+  },
+  {
+    "model": "questions.numericquestion",
+    "pk": 12,
+    "fields": {
+      "category": 6,
+      "text": "Колко градуса е сборът от ъглите в един триъгълник?",
+      "correct_answer": 180
+    }
+  }
+]
