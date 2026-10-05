@@ -14,6 +14,7 @@ Conquiztador/
 ├── backend/
 │   ├── accounts/        # custom user, profile, auth API, tests
 │   ├── config/          # settings, root urls, error envelope
+│   ├── questions/       # question bank models, admin, fixture, tests
 │   ├── manage.py
 │   └── requirements.txt
 └── frontend/
@@ -52,15 +53,35 @@ the browser sees one origin and the session and CSRF cookies work without CORS.
 cd backend
 .\.venv\Scripts\Activate.ps1
 python manage.py test accounts
+python manage.py test questions
 ```
 
 ## Django admin
 
-`User` and `Profile` are registered in the admin at `/admin/`. Create an
-account to log in with:
+`User`, `Profile`, `Category`, `ChoiceQuestion` and `NumericQuestion` are
+registered in the admin at `/admin/`. Answer options are edited inline on
+their choice question. Create an account to log in with:
 
 ```powershell
 python manage.py createsuperuser
+```
+
+## Question bank
+
+The `questions` app stores two kinds of questions, each in its own table:
+
+- `ChoiceQuestion`: four `AnswerOption`s, exactly one of them correct
+- `NumericQuestion`: a whole-number `correct_answer`
+
+Both inherit `category` and `text` from the abstract `BaseQuestion`. A
+category that still has questions cannot be deleted.
+
+Load the initial question bank (6 categories, 12 choice questions with 48
+answer options, 12 numeric questions, all in Bulgarian) from the repository
+root:
+
+```powershell
+python backend/manage.py loaddata questions/question_bank.json
 ```
 
 ## Authentication API
@@ -93,7 +114,8 @@ Errors use one shape everywhere:
 
 ## Milestones
 
-| Tag        | Milestone                   |
-| ---------- | --------------------------- |
-| `m0-setup` | Initial project setup       |
-| `m1-auth`  | Authentication and users    |
+| Tag                | Milestone                |
+| ------------------ | ------------------------ |
+| `m0-setup`         | Initial project setup    |
+| `m1-auth`          | Authentication and users |
+| `m2-question-bank` | Question bank            |
