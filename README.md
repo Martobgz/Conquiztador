@@ -14,6 +14,7 @@ Conquiztador/
 ├── backend/
 │   ├── accounts/        # custom user, profile, auth API, tests
 │   ├── config/          # settings, root urls, error envelope
+│   ├── games/           # games, players, rounds and their lifecycle
 │   ├── questions/       # question bank models, admin, fixture, tests
 │   ├── manage.py
 │   └── requirements.txt
@@ -54,13 +55,14 @@ cd backend
 .\.venv\Scripts\Activate.ps1
 python manage.py test accounts
 python manage.py test questions
+python manage.py test games
 ```
 
 ## Django admin
 
-`User`, `Profile`, `Category`, `ChoiceQuestion` and `NumericQuestion` are
-registered in the admin at `/admin/`. Answer options are edited inline on
-their choice question. Create an account to log in with:
+`User`, `Profile`, `Category`, `ChoiceQuestion`, `NumericQuestion`, `Game`,
+`Player` and `Round` are registered in the admin at `/admin/`. Answer options
+are edited inline on their choice question. Create an account to log in with:
 
 ```powershell
 python manage.py createsuperuser
@@ -83,6 +85,28 @@ root:
 ```powershell
 python backend/manage.py loaddata questions/question_bank.json
 ```
+
+## Games and rounds
+
+A `Game` is played by exactly three `Player`s, one per color (red, green,
+blue). Each `Player` links a user to one game and holds that user's score in
+it. A user joins a game at most once, and a score never goes below zero.
+
+Games and rounds only move forward:
+
+| Model   | Lifecycle                      | Methods                                 |
+| ------- | ------------------------------ | --------------------------------------- |
+| `Game`  | `waiting → active → completed` | `add_player()`, `start()`, `complete()` |
+| `Round` | `pending → active → completed` | `start()`, `complete(winner)`           |
+
+- Players join only while the game is `waiting`; `start()` needs exactly 3.
+- `Game.create_round(type)` numbers rounds 1, 2, 3, … and only works in an
+  `active` game once the previous round is `completed`.
+- A game has at most one `active` round, and `get_current_round()` returns
+  the round with the highest number.
+- A completed round records its `winner` (a player from the same game) and
+  `completed_at`.
+- Round types: `city_capture`, `battle`, `capital_attack`, `bonus`.
 
 ## Authentication API
 
@@ -114,8 +138,9 @@ Errors use one shape everywhere:
 
 ## Milestones
 
-| Tag                | Milestone                |
-| ------------------ | ------------------------ |
-| `m0-setup`         | Initial project setup    |
-| `m1-auth`          | Authentication and users |
-| `m2-question-bank` | Question bank            |
+| Tag                   | Milestone                |
+| --------------------- | ------------------------ |
+| `m0-setup`            | Initial project setup    |
+| `m1-auth`             | Authentication and users |
+| `m2-question-bank`    | Question bank            |
+| `m3-games-and-rounds` | Games and rounds         |
