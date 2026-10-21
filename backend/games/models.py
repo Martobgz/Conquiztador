@@ -315,3 +315,12 @@ class Round(StatusLifecycle, models.Model):
 
     def complete(self, winner):
         self.move_to(self.STATUS_COMPLETED, winner=winner, completed_at=timezone.now())
+
+
+class WaitingRoomEntry(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="waiting_room_entry",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
